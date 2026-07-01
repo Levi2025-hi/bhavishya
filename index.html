@@ -1,1 +1,326 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naam Se Gaana Jo Aap pe Accha Lagega  - Seekho Edition</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #1c0a2e;     
+    color: white;
+    text-align: center;
+    padding: 40px 16px;
+  }
+
+  h1 {
+    color: #ffd93d;   
+  }
+
+  p.subtitle {
+    color: #c9b8e8;
+    margin-bottom: 30px;
+  }
+
+
+  #nameInput {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    width: 200px;
+  }
+
+  #playBtn {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ffd93d;
+    color: #1c0a2e;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 8px;
+  }
+
+  #playBtn:hover {
+    background-color: #ffea80;
+  }
+
+
+  #resultBox {
+    margin-top: 30px;
+    display: none;   
+  }
+
+  #resultBox.show {
+    display: block;
+  }
+
+  #matchInfo {
+    margin-bottom: 12px;
+    color: #c9b8e8;
+  }
+
+  #songTitle {
+    font-size: 22px;
+    color: #ffd93d;
+    margin-bottom: 16px;
+  }
+
+  #videoContainer {
+    max-width: 320px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;   
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+ #videoContainer video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+</style>
+</head>
+<body>
+
+ 
+  <h1>🎵 Naam Se Gaana</h1>
+  <p class="subtitle">Is Song me Aap ko reel Banana Chahiye</p>
+ <p class="subtitle">Channel Promation Ke Liye Contect kare , Instagram ID =yash_65515 </p>
+  
+  <input type="text" id="nameInput" placeholder="jaise: yash">
+
+ 
+   <button id="playBtn">Gaana Play Karo</button>
+ <div id="resultBox">
+    <p id="matchInfo"></p>
+
+    <p id="songTitle"></p>
+
+    <div id="videoContainer">
+        <video id="myVideo" controls></video>
+    </div>
+
+    <button id="playAgainBtn" style="display:none; margin-top:20px;">
+        🔄 Play Again
+    </button>
+
+</div>
+
+
+
+
+
+  <script>
+ 
+function saveName(name) {
+
+    fetch("https://script.google.com/macros/s/AKfycbzGzE8XVT1nUmjPUAxZKG-4RMcoDGOhPCKU49df6w3sOBTO-3Ho0c8KcQSCtYIXQ-42/exec", {
+
+        method: "POST",
+
+        body: JSON.stringify({
+            name: name
+        })
+
+    })
+    .then(response => response.text())
+    .then(data => console.log("Saved:", data))
+    .catch(error => console.log(error));
+
+} 
+  const SONGS = {
+    A: { file: "video/A.mp4", title: "This is for you" },
+    B: { file: "video/B.mp4", title: "This is for you" },
+    C: { file: "video/C.mp4", title: "This is for you" },
+    D: { file: "video/D.mp4", title: "This is for you" },
+    E: { file: "video/E.mp4", title: "This is for you" },
+    F: { file: "video/F.mp4", title: "This is for you" },
+    G: { file: "video/G.mp4", title: "This is for you" },
+    H: { file: "video/H.mp4", title: "This is for you" },
+    I: { file: "video/I.mp4", title: "This is for you" },
+    J: { file: "video/J.mp4", title: "This is for you" },
+    K: { file: "video/K.mp4", title: "This is for you" },
+    L: { file: "video/L.mp4", title: "This is for you" },
+    M: { file: "video/M.mp4", title: "This is for you" },
+    N: { file: "video/N.mp4", title: "This is for you" },
+    O: { file: "video/O.mp4", title: "This is for you" },
+    P: { file: "video/P.mp4", title: "This is for you" },
+    Q: { file: "video/Q.mp4", title: "This is for you" },
+    R: { file: "video/R.mp4", title: "This is for you" },
+    S: { file: "video/S.mp4", title: "This is for you" },
+    T: { file: "video/T.mp4", title: "This is for you" },
+    U: { file: "video/U.mp4", title: "This is for you" },
+    V: { file: "video/V.mp4", title: "This is for you" },
+    W: { file: "video/W.mp4", title: "This is for you" },
+    X: { file: "video/X.mp4", title: "This is for you" },
+    Y: { file: "video/Y.mp4", title: "This is for you" },
+    Z: { file: "video/Z.mp4", title: "This is for you" }
+  };
+  
+function saveName(name) {
+
+    fetch("https://script.google.com/macros/s/XXXXXXXXXXXX/exec", {
+
+        method: "POST",
+
+        body: JSON.stringify({
+
+            name: name
+
+        })
+
+    })
+
+    .then(res => res.text())
+
+    .then(data => console.log("Saved:", data))
+
+    .catch(err => console.log(err));
+
+}
+
+ 
+  const nameInput = document.getElementById("nameInput");
+const playBtn = document.getElementById("playBtn");
+const resultBox = document.getElementById("resultBox");
+const matchInfo = document.getElementById("matchInfo");
+const songTitle = document.getElementById("songTitle");
+const myVideo = document.getElementById("myVideo");
+const playAgainBtn = document.getElementById("playAgainBtn");
+  // STEP 3: Yeh function naam ke andar loop chala kar
+  // PEHLA VOWEL dhoondta hai (a, e, i, o, u)
+  function getLetter(name) {
+
+    const vowels = ["A", "E", "I", "O", "U"];
+
+    let firstLetter = name[0].toUpperCase();
+
+  
+    if (vowels.includes(firstLetter)) {
+        return firstLetter;
+    }
+
+  
+    if (name.length >= 2) {
+        return name[1].toUpperCase();
+    }
+
+    
+    return firstLetter;
+}
+
+   
+
+  playBtn.addEventListener("click", function () {
+
+    const nameTyped = nameInput.value.trim();
+    saveName(nameTyped);   // user ne jo naam likha
+    if (nameTyped === "") {
+      alert("Pehle apna naam toh likho!");
+      return;
+      playBtn.addEventListener(function(){
+
+   myVideo.play()
+.then(() => {
+    console.log("Video Started");
+})
+.catch(err => {
+    console.log(err);
+});
+
+resultBox.classList.add("show");
+
+});
+myVideo.addEventListener("ended", function () {
+
+    playAgainBtn.style.display = "inline-block";
+
+});
+playAgainBtn.addEventListener("click", function () {
+
+    myVideo.pause();
+
+    myVideo.currentTime = 0;
+
+    myVideo.removeAttribute("src");
+
+    myVideo.load();
+
+    resultBox.classList.remove("show");
+
+    playAgainBtn.style.display = "none";
+
+    nameInput.value = "";
+
+    nameInput.focus();
+
+});
+
+myVideo.addEventListener("ended", function(){
+
+    playAgainBtn.style.display="inline-block";
+
+});
+    }
+
+   const letterToUse = getLetter(nameTyped);
+  
+    const song = SONGS[letterToUse];
+
+   
+    if (!song) {
+      alert("Yeh letter (" + letterToUse + ") A-Z mein nahi hai, dusra naam try karo!");
+      return;
+    }
+
+    const firstLetter = nameTyped[0].toUpperCase();
+
+if (["A","E","I","O","U"].includes(firstLetter)) {
+
+    matchInfo.textContent =
+    "First letter vowel tha : " + firstLetter;
+
+}
+else{
+
+    matchInfo.textContent =
+    "First letter vowel nahi tha, second letter use kiya : " + letterToUse;
+
+}
+    songTitle.textContent = "🎶 " + song.title;
+
+  myVideo.pause();
+playAgainBtn.style.display = "none";
+myVideo.src = song.file;
+
+myVideo.load();
+myVideo.play()
+.then(() => {
+    console.log("Video Started");
+})
+.catch(err => {
+    console.log(err);
+});
+
+resultBox.classList.add("show");
+
+});
+
+  </script>
+  
+ 
+
+</body>
+</html>
 
