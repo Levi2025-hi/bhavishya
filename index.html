@@ -198,8 +198,6 @@ const matchInfo = document.getElementById("matchInfo");
 const songTitle = document.getElementById("songTitle");
 const myVideo = document.getElementById("myVideo");
 const playAgainBtn = document.getElementById("playAgainBtn");
-  // STEP 3: Yeh function naam ke andar loop chala kar
-  // PEHLA VOWEL dhoondta hai (a, e, i, o, u)
   function getLetter(name) {
 
     const vowels = ["A", "E", "I", "O", "U"];
@@ -295,7 +293,7 @@ if (["A","E","I","O","U"].includes(firstLetter)) {
 else{
 
     matchInfo.textContent =
-    "First letter vowel nahi tha, second letter use kiya : " + letterToUse;
+    "According to your name this song is perfect for you  : ";
 
 }
     songTitle.textContent = "🎶 " + song.title;
